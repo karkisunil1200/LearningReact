@@ -14,14 +14,16 @@ const NameScreen = () => {
       <Text style={styles.title}>Enter Name: </Text>
       <TextInput
         style={styles.input}
-        type='text'
-        placeholder='Alexander'
-        autoCapitalize='none'
-        autoCorrect={false}
-        onChangeText={onInputChange}
+        type='password'
         value={text}
+        placeholder='password'
+        onChangeText={onInputChange}
+        secureTextEntry
+        autoCorrect={false}
       />
-      <Text>My Name is {text} </Text>
+      {text.length < 4 ? (
+        <Text style={styles.password}>'Your password must be more character'</Text>
+      ) : null}
     </View>
   );
 };
@@ -31,12 +33,14 @@ const styles = StyleSheet.create({
     margin: 15,
     borderColor: 'black',
     borderWidth: 2,
-    color: 'red',
     padding: 10
   },
   title: {
     backgroundColor: 'orange',
     padding: 10
+  },
+  password: {
+    color: 'red'
   }
 });
 
